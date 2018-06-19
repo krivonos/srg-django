@@ -1,0 +1,12 @@
+{% extends "plan/base.html" %}
+{% block content %}
+{% for session in bearlakes %} 
+Day {{ session.Day.DayNumber }} {{ session.Day.title }}
+<a href="{{ session.get_absolute_url }}">Show</a> |
+<a href="{{ session.get_update_url }}">Update</a> |
+sys: {{ session.sysSessionRequest }} min,
+ero: {{ session.eroSessionRequest }} min,
+art: {{ session.artSessionRequest }} min,
+</br>
+{% endfor %}
+{% endblock %}

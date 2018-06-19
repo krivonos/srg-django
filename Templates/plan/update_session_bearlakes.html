@@ -1,0 +1,83 @@
+{% extends "plan/base.html" %}
+
+{% block header %}<strong>*** header ***</strong>{% endblock %}
+
+{% block login %}{% endblock %}
+
+{% block content %}
+<form action="{{ SessionBearLakes.get_update_url }}" method="post">{% csrf_token %}
+
+{% if form.errors %}<div class="error">{{ form.errors }}</div>{% endif %}
+
+                {% for hidden in form.hidden_fields %}
+                {{ hidden }}<hr>
+                {% endfor %}
+
+<!--
+'title': forms.TextInput(attrs={'style': 'width: 620px;', 'class': 'title'}),
+'TimeBegin': forms.TextInput(attrs={'style': 'width: 620px;', 'class': 'title'}),
+'TimeEnd': forms.TextInput(attrs={'style': 'width: 620px;', 'class': 'title'}),
+'sysSessionRequest': forms.TextInput(attrs={'style': 'width: 620px;', 'class': 'title'}),
+'eroSessionRequest': forms.TextInput(attrs={'style': 'width: 620px;', 'class': 'title'}),
+'artSessionRequest': forms.TextInput(attrs={'style': 'width: 620px;', 'class': 'title'}),
+'sysNotes': forms.Textarea(attrs={'style': 'width: 620px;', 'rows': 80}),
+'eroNotes': forms.Textarea(attrs={'style': 'width: 620px;', 'rows': 80}),
+'artNotes': forms.Textarea(attrs={'style': 'width: 620px;', 'rows': 80}),
+-->
+        {% for error in form.title.errors %}
+        <div class="error">{{ error }}</div>
+        {% endfor %}
+        <label for="id_title">Title:</label><br>
+        {{ form.title }}<br>
+
+	{% for error in form.TimeBegin.errors %}
+        <div class="error">{{ error }}</div>
+        {% endfor %}
+        <label for="id_TimeBegin">TimeBegin:</label><br>
+        {{ form.TimeBegin }}<br>
+
+	{% for error in form.TimeEnd.errors %}
+        <div class="error">{{ error }}</div>
+        {% endfor %}
+        <label for="id_TimeEnd">TimeEnd:</label><br>
+        {{ form.TimeEnd }}<br>
+
+	{% for error in form.sysSessionRequest.errors %}
+        <div class="error">{{ error }}</div>
+        {% endfor %}
+        <label for="id_sysSessionRequest">sysSessionRequest (minutes):</label><br>
+        {{ form.sysSessionRequest }}<br>
+
+	{% for error in form.sysNotes.errors %}
+        <div class="error">{{ error }}</div>
+        {% endfor %}
+        <label for="id_sysNotes">sysSessionRequest:</label><br>
+        {{ form.sysNotes }}<br>
+	
+	{% for error in form.eroSessionRequest.errors %}
+        <div class="error">{{ error }}</div>
+        {% endfor %}
+        <label for="id_eroSessionRequest">eroSessionRequest (minutes):</label><br>
+        {{ form.eroSessionRequest }}<br>
+
+	{% for error in form.eroNotes.errors %}
+        <div class="error">{{ error }}</div>
+        {% endfor %}
+        <label for="id_sysNotes">eroSessionRequest:</label><br>
+        {{ form.eroNotes }}<br>
+	
+	{% for error in form.artSessionRequest.errors %}
+        <div class="error">{{ error }}</div>
+        {% endfor %}
+        <label for="id_artSessionRequest">sysSessionRequest:</label><br>
+        {{ form.artSessionRequest }}<br>
+	
+	{% for error in form.artNotes.errors %}
+        <div class="error">{{ error }}</div>
+        {% endfor %}
+        <label for="id_artNotes">artSessionRequest (minutes):</label><br>
+        {{ form.artNotes }}<br>
+
+<input class="button orange big" type="submit" value="Update" />
+</form>
+{% endblock %}

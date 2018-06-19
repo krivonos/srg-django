@@ -1,0 +1,7 @@
+{% extends "plan/base.html" %}
+{% block content %}
+Day {{ session.Day.DayNumber }} {{ session.Day.title }} <a href="{{ session.get_update_url }}">Update</a></br>
+sysNotes: {{ session.sysSessionRequest }} {{ session.sysNotes }}</br>
+eroNotes: {{ session.eroSessionRequest }} {{ session.eroNotes }}</br>
+artNotes: {{ session.artSessionRequest }} {{ session.artNotes }}</br>
+{% endblock %}
