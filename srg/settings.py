@@ -25,12 +25,13 @@ SECRET_KEY = 'n)b46w49^oyovl2!yf+or^7_ac6!9$1)3dr*^l_k-ys48j58cc'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['triton.iki.rssi.ru',]
+ALLOWED_HOSTS = ['triton.iki.rssi.ru','127.0.0.1']
 
 
 # Application definition
 
 INSTALLED_APPS = [
+    'plan.apps.PlanConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -54,7 +55,7 @@ ROOT_URLCONF = 'srg.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': ['/opt/srg/srg-django/Templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [

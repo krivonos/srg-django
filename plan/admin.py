@@ -1,3 +1,6 @@
 from django.contrib import admin
+from plan.models import Day, SessionBearLakes,SessionUssuriysk
 
-# Register your models here.
+admin.site.register(Day)
+admin.site.register(SessionBearLakes)
+admin.site.register(SessionUssuriysk)
