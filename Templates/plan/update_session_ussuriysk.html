@@ -1,0 +1,87 @@
+{% extends "plan/base.html" %}
+
+
+
+{% block login %}{% endblock %}
+
+{% block content %}
+
+<div bp="grid">
+<div bp="2"></div>
+<div bp="8">
+<h2>Ussuriysk / Уссурийск</h2>
+<h3>Day {{ session.Day.DayNumber }}, {{ session.Day.date }}</h3>
+
+<form action="{{ SessionBearLakes.get_update_url }}" method="post">{% csrf_token %}
+
+{% if form.errors %}<div class="error">{{ form.errors }}</div>{% endif %}
+
+  
+                {% for hidden in form.hidden_fields %}
+                {{ hidden }}<hr>
+                {% endfor %}
+  
+
+        {% for error in form.title.errors %}
+        <div class="error">{{ error }}</div>
+        {% endfor %}
+        <label for="id_title" class=title>Ground contact description:</label><br>
+        {{ form.title }}<br><br>
+
+	{% for error in form.TimeBegin.errors %}
+        <div class="error">{{ error }}</div>
+        {% endfor %}
+        <label for="id_TimeBegin">Ground contact from:</label>
+        {{ form.TimeBegin }}:00
+
+	{% for error in form.TimeEnd.errors %}
+        <div class="error">{{ error }}</div>
+        {% endfor %}
+        <label for="id_TimeEnd"> to:</label>
+        {{ form.TimeEnd }}:00 in 24-hour time format.<br><br>
+
+	<h3>S/C operations</h3>
+	{% for error in form.sysSessionRequest.errors %}
+        <div class="error">{{ error }}</div>
+        {% endfor %}
+        <label for="id_sysSessionRequest">Time request:</label>
+        {{ form.sysSessionRequest }} minutes<br>
+
+	{% for error in form.sysNotes.errors %}
+        <div class="error">{{ error }}</div>
+        {% endfor %}
+        <label for="id_sysNotes">Notes:</label><br>
+        {{ form.sysNotes }}<br>
+	
+	<h3>eRosita operations</h3>
+	{% for error in form.eroSessionRequest.errors %}
+        <div class="error">{{ error }}</div>
+        {% endfor %}
+        <label for="id_eroSessionRequest">Time request:</label>
+        {{ form.eroSessionRequest }} minutes<br>
+
+	{% for error in form.eroNotes.errors %}
+        <div class="error">{{ error }}</div>
+        {% endfor %}
+        <label for="id_sysNotes">Notes:</label><br>
+        {{ form.eroNotes }}<br>
+	
+	<h3>ART-XC operations</h3>
+	{% for error in form.artSessionRequest.errors %}
+        <div class="error">{{ error }}</div>
+        {% endfor %}
+        <label for="id_artSessionRequest">Time request:</label>
+        {{ form.artSessionRequest }} minutes<br>
+	
+	{% for error in form.artNotes.errors %}
+        <div class="error">{{ error }}</div>
+        {% endfor %}
+        <label for="id_artNotes">Notes:</label><br>
+        {{ form.artNotes }}<br><br>
+
+<input class="button white big" type="submit" value="Update" />
+</form>
+</div>
+<div bp="2"></div>
+
+{% endblock %}
